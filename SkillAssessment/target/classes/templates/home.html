@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Skill Assessment</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .bg-container {
+            /* ✅ Use the image as a background */
+            position: relative;
+             width: 100%;
+           height: 100vh;
+          background-image: url("https://img.freepik.com/premium-photo/code-part-symbol-concept-coding-programming-3d-render_567294-916.jpg");
+           background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center; /* Horizontal center */
+            align-items: center;     /* Vertical center */
+        }
+
+                .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.6); /* optional: dark background for text */
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .text-overlay h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .text-overlay a button {
+            padding: 12px 25px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .text-overlay a button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="bg-container">
+         <div class="text-overlay">
+
+     
+    <h1>Welcome to the Skill Assessment Website!</h1>
+   <a th:href="@{/select-level}">
+    <button >Get Started</button>
+</a>
+      
+    </div>
+    </div>
+</body>
+</html>

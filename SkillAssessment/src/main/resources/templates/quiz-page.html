@@ -1,0 +1,90 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #d7e1ec, #fdfbfb);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 2em;
+            color: #2c3e50;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+        }
+
+        .question-box {
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-box strong {
+            color: #34495e;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 12px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            background-color: #2c3e50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1a242f;
+        }
+    </style>
+</head>
+<body>
+    <h2>Quiz - Level: <span th:text="${level}"></span></h2>
+
+    <form action="/submitQuiz" method="post">
+        <input type="hidden" name="level" th:value="${level}" /> 
+
+        <div class="container">
+            <div th:each="question, iterStat : ${quizQuestions}" class="question-box">
+                <p>
+                    <strong>Question [[${iterStat.index + 1}]]:</strong>
+                    <span th:text="${question.question}"></span><br>
+                    <input type="text" th:name="${'answer_' + question.id}" placeholder="Your Answer" required />
+                </p>
+            </div>
+
+            <button type="submit">Submit Quiz</button>
+        </div>
+    </form>
+</body>
+</html>

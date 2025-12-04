@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Study Material</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #fdfbfb, #ebedee);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 2em;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        li {
+            margin: 15px 0;
+            font-size: 18px;
+            background-color: #f1f1f1;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        li::before {
+            content: counter(question-counter) ". ";
+            counter-increment: question-counter;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        ul {
+            counter-reset: question-counter;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            background-color: #252627ff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #171718ff;
+        }
+    </style>
+</head>
+<body>
+    <h2>Study Material</h2>
+
+    <div class="container" th:if="${studyQuestions}">
+        <ul>
+            <li th:each="question : ${studyQuestions}">
+                <strong>Q:</strong> <span th:text="${question.question}"></span><br/>
+                <strong>A:</strong> <span th:text="${question.answer}"></span>
+            </li>
+        </ul>
+
+        <form action="/start-quiz" method="get">
+            <button type="submit">Start Quiz</button>
+        </form>
+    </div>
+</body>
+</html>

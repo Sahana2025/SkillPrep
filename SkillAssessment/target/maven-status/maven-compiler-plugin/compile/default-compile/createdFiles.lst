@@ -1,0 +1,8 @@
+com\skill\model\QuizQuestion.class
+com\skill\repository\QuizQuestionRepository.class
+com\skill\repository\QuizResultRepository.class
+com\skill\model\QuizResult.class
+com\skill\controller\QuizController.class
+com\skill\controller\QuizController$ErrorHandlerController.class
+com\skill\controller\HomeController.class
+com\skill\SkillAssessmentApplication.class

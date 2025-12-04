@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz Result</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #eef2f3, #8e9eab);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .result-container {
+            width: 80%;
+            margin: 30px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            text-align: left;
+        }
+
+        .question-box {
+            background-color: #f9f9f9;
+            border-left: 5px solid #353635ff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .question-box strong {
+            display: inline-block;
+            width: 130px;
+            color: #555;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            background-color: #1e201eff;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #202221ff;
+        }
+    </style>
+</head>
+<body>
+    <h2>Quiz Result</h2>
+
+    <p><strong>Your Score:</strong> <span th:text="${score}"></span> / 10</p>
+
+    <div class="result-container">
+        <h3>Detailed Feedback:</h3>
+        <div th:each="result : ${results}" class="question-box">
+            <p><strong>Q:</strong> <span th:text="${result.question}"></span></p>
+            <p><strong>Your Answer:</strong> <span th:text="${result.userAnswer}"></span></p>
+            <p><strong>Correct Keywords:</strong> <span th:text="${result.keywords}"></span></p>
+        </div>
+    </div>
+
+    <a href="/select-level">Take Another Quiz</a>
+</body>
+</html>
